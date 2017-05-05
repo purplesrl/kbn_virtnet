@@ -487,7 +487,7 @@ define(function (require) {
                             };
                         });
 
-                        var = "<p>serpent3" + bucket.key + "</p>"
+                        var inPopup = "<p>serpent3" + bucket.key + "</p>"
                         if(dataParsed[i].nodeColorValue != "default"){
                             var colorNodeFinal = dataParsed[i].nodeColorValue;
                             inPopup += "<p>serpent4" + dataParsed[i].nodeColorKey + "</p>";
