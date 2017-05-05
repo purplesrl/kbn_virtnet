@@ -177,7 +177,7 @@ define(function (require) {
                         }
 
                         //assigning color and the content of the popup
-                        var inPopup = "<p>serpent1" + bucket.key + "</p>"
+                        var inPopup = "<p>serpent1" + bucket.key + " " + countMetric + "</p>"
                         if(dataParsed[i].nodeColorValue != "default"){
                             var colorNodeFinal = dataParsed[i].nodeColorValue;
                             inPopup += "<p>serpent2" + dataParsed[i].nodeColorKey + "</p>";
