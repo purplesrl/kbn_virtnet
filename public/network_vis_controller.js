@@ -177,10 +177,10 @@ define(function (require) {
                         }
 
                         //assigning color and the content of the popup
-                        var inPopup = "<p>" + bucket.key + "</p>"
+                        var inPopup = "<p>serpent1" + bucket.key + "</p>"
                         if(dataParsed[i].nodeColorValue != "default"){
                             var colorNodeFinal = dataParsed[i].nodeColorValue;
-                            inPopup += "<p>" + dataParsed[i].nodeColorKey + "</p>";
+                            inPopup += "<p>serpent2" + dataParsed[i].nodeColorKey + "</p>";
                         }else{
                             var colorNodeFinal = $scope.vis.params.firstNodeColor;
                         }
@@ -487,10 +487,10 @@ define(function (require) {
                             };
                         });
 
-                        var inPopup = "<p>" + bucket.key + "</p>"
+                        var = "<p>serpent3" + bucket.key + "</p>"
                         if(dataParsed[i].nodeColorValue != "default"){
                             var colorNodeFinal = dataParsed[i].nodeColorValue;
-                            inPopup += "<p>" + dataParsed[i].nodeColorKey + "</p>";
+                            inPopup += "<p>serpent4" + dataParsed[i].nodeColorKey + "</p>";
                         }else{
                             var colorNodeFinal = $scope.vis.params.firstNodeColor;
                         }
