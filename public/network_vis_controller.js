@@ -177,7 +177,7 @@ define(function (require) {
                         }
 
                         //assigning color and the content of the popup
-                        var inPopup = "<p>serpent1" + bucket.key + " " + countMetric + "</p>"
+                        var inPopup = "<p>"+ value + "</p>" + "<p>serpent1" + bucket.key + "</p>"
                         if(dataParsed[i].nodeColorValue != "default"){
                             var colorNodeFinal = dataParsed[i].nodeColorValue;
                             inPopup += "<p>serpent2" + dataParsed[i].nodeColorKey + "</p>";
@@ -231,18 +231,28 @@ define(function (require) {
                                         var newNode = {
                                             id : i,
                                             key: dataParsed[n].relationWithSecondNode[r].keySecondNode,
+					    from: dataParsed[n].keyFirstNode,
                                             label : dataParsed[n].relationWithSecondNode[r].keySecondNode,
                                             color: $scope.vis.params.secondNodeColor,
                                             shape: $scope.vis.params.shapeSecondNode
                                         };
+					// Add title if popup is enabled
+                                        if($scope.vis.params.showPopup){
+                                            	newNode.title = "<p>" + newNode.key + "</p>"
+                                                }
                                         //Add new node
                                         dataNodes.push(newNode);
                                         //And create the relation (edge)
                                         var edge = {
-                                            from : result[0].id,
-                                            to : dataNodes[dataNodes.length-1].id,
+					    from : result[0].id,
+                                            to: dataNodes[dataNodes.length-1].id,
                                             value: dataParsed[n].relationWithSecondNode[r].widthOfEdge
                                         }
+					// Add title from -> to -> count if popup is enabled
+                                        if($scope.vis.params.showPopup){
+                                            edge.title = "<p>" + result[0].key + " -> " + dataNodes[dataNodes.length-1].key + " " + dataParsed[n].relationWithSecondNode[r].widthOfEdge + "</p>"
+                                                }
+
                                         dataEdges.push(edge);
 
                                     } else if (nodeOfSecondType.length == 1) {
@@ -250,8 +260,12 @@ define(function (require) {
                                         var enlace = {
                                             from : result[0].id,
                                             to : nodeOfSecondType[0].id,
-                                            value: dataParsed[n].relationWithSecondNode[r].widthOfEdge
+                                            value: dataParsed[n].relationWithSecondNode[r].widthOfEdge,
                                         }
+					// Add titl from -> to -> count if popup is enabled
+                                        if($scope.vis.params.showPopup){
+						enlace.title =  "<p>" + result[0].key + " -> " + nodeOfSecondType[0].key + " " + dataParsed[n].relationWithSecondNode[r].widthOfEdge + "</p>"
+						}
                                         dataEdges.push(enlace);
                                     } else {
                                         console.log("Error: Multiples nodes with same id found");
@@ -276,6 +290,7 @@ define(function (require) {
                         nodes: nodesDataSet,
                         edges: edgesDataSet
                     };
+		    console.log(data);
                     //CHANGE: Options controlled by user directly
                     var options_1 = {
                         height: container.getBoundingClientRect().height.toString(),
